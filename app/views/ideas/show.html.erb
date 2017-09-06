@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @idea.name %>
+  <strong>Content:</strong>
+  <%= @idea.content %>
 </p>
 
 <p>
   <strong>Category:</strong>
-  <%= @idea.category %>
+  <%= @idea.category.name %>
 </p>
 
 <%= link_to 'Edit', edit_idea_path(@idea) %> |
