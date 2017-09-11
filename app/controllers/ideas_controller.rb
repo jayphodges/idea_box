@@ -1,6 +1,7 @@
 class IdeasController < ApplicationController
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
-  before_action :current_user
+  before_action :require_user
+  before_action :require_auth
 
   def index
     @ideas = Idea.all
@@ -53,6 +54,10 @@ class IdeasController < ApplicationController
   end
 
   private
+
+    def require_auth
+      redirect_to login unless current_user
+    end
 
     def set_idea
       @idea = Idea.find(params[:id])

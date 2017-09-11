@@ -10,7 +10,7 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
+<% if current_user && current_user.admin?%>
   <tbody>
     <% @ideas.each do |idea| %>
       <tr>
@@ -28,8 +28,23 @@
       </tr>
     <% end %>
   </tbody>
+  <% else %>
+  <tbody>
+    <% @current_user.ideas.each do |idea| %>
+      <tr>
+        <td><%= idea.content %></td>
+        <td><%= idea.category.name %></td>
+        <td><%= link_to idea, class: "waves-effect waves-light btn-small" do %>
+          <i class="material-icons">info</i>
+        <% end %></td>
+        <td><%= link_to edit_idea_path(idea), class: "waves-effect waves-light btn-small" do %>
+          <i class="material-icons">edit</i>
+        <% end %></td>
+        <td><%= link_to idea, method: :delete, data: { confirm: 'Are you sure?' }, class: "waves-effect waves-light btn-small" do %>
+          <i class="material-icons">delete</i>
+        <% end %></td>
+      </tr>
+    <% end %>
+        <% end %>
+  </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Idea', new_idea_path %>

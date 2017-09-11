@@ -1,33 +1,32 @@
 <p id="notice"><%= notice %></p>
-
+<%= link_to "Logout", logout_path, method: :delete %>
 <div class="row center-align">
-<%= link_to new_category_path, class: "waves-effect waves-light btn-small" do %>
+<%= link_to new_category_path, class: "waves-effect waves-light btn-small"  if current_user && current_user.admin? do %>
 <a class="waves-effect waves-light btn blue center-align">New Category</a>
 <% end %>
 </div>
 
 
-
-
-<div class="row">
- <% @categories.each do |category| %>
-  <div class="col s6 m3">
-    <div class="card">
-      <div class="card-content ">
-        <span class="card-title center"><%= category.name %></span>
-      </div>
-      <div class="card-action white center">
-        <td><%= link_to category, class: "waves-effect waves-light btn-small" do %>
-          <i class="material-icons">info</i>
-        <% end %></td>
-        <td><%= link_to edit_category_path(category), class: "waves-effect waves-light btn-small" do %>
-          <i class="material-icons">edit</i>
-        <% end %></td>
-        <td><%= link_to category, method: :delete, data: { confirm: 'Are you sure?' }, class: "waves-effect waves-light btn-small" do %>
-          <i class="material-icons">delete</i>
-        <% end %></td>
-      </div>
-    </div>
-  </div>
+    <div class="col s6 m3">
+     <% @categories.each do |category| %>
+      <div class="card">
+        <div class="card-content ">
+          <span class="card-title center"><%= category.name %></span>
+        </div>
+        <% if current_user && current_user.admin? %>
+        <div class="card-action white center">
+          <td><%= link_to category, class: "waves-effect waves-light btn-small" do %>
+            <i class="material-icons">info</i>
+          <% end %></td>
+          <td><%= link_to edit_category_path(category), class: "waves-effect waves-light btn-small" do %>
+            <i class="material-icons">edit</i>
+          <% end %></td>
+          <td><%= link_to category, method: :delete, data: { confirm: 'Are you sure?' }, class: "waves-effect waves-light btn-small" do %>
+            <i class="material-icons">delete</i>
+          <% end %></td>
       <% end %>
-</div>
+      </div>
+
+    </div>
+        <% end %>
+  </div>

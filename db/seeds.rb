@@ -13,6 +13,10 @@ CATEGORIES = ["Eureka", "Inside the Box", "Peace Treaty", "Collective", "Zombie"
 OPTIONS = []
 IMAGE_CATEGORIES = ["abstract", "animals", "business", "cats", "city", "fashion", "food", "nature", "nightlife", "people", "sports", "technics", "transport"]
 
+
+puts "Creating admin"
+User.create(name: "admin", email: "admin@admin.com", password: "adminpass", role: "admin")
+
 6.times do |users|
   name = Faker::FamilyGuy.character
   email = "#{name.gsub(/\s+/, "")}@fox.com"
@@ -27,7 +31,7 @@ CATEGORIES.each do |i|
 end
 
 30.times do |ideas|
-  idea = Idea.create(content: Faker::HitchhikersGuideToTheGalaxy.quote, category_id: rand(1..6), user_id: rand(1..5))
+  idea = Idea.create(content: Faker::HitchhikersGuideToTheGalaxy.quote, category_id: rand(1..6), user_id: rand(1..6))
   puts "Created idea: #{idea.content}"
 end
 
