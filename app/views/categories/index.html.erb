@@ -1,29 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Categories</h1>
+<div class="row center-align">
+<%= link_to new_category_path, class: "waves-effect waves-light btn-small" do %>
+<a class="waves-effect waves-light btn blue center-align">New Category</a>
+<% end %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-        <div class="righ-align">
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
+<div class="row">
+ <% @categories.each do |category| %>
+  <div class="col s6 m3">
+    <div class="card">
+      <div class="card-content ">
+        <span class="card-title center"><%= category.name %></span>
       </div>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Category', new_category_path %>
+      <div class="card-action white center">
+        <td><%= link_to category, class: "waves-effect waves-light btn-small" do %>
+          <i class="material-icons">info</i>
+        <% end %></td>
+        <td><%= link_to edit_category_path(category), class: "waves-effect waves-light btn-small" do %>
+          <i class="material-icons">edit</i>
+        <% end %></td>
+        <td><%= link_to category, method: :delete, data: { confirm: 'Are you sure?' }, class: "waves-effect waves-light btn-small" do %>
+          <i class="material-icons">delete</i>
+        <% end %></td>
+      </div>
+    </div>
+  </div>
+      <% end %>
+</div>

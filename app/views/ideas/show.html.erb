@@ -10,5 +10,13 @@
   <%= @idea.category.name %>
 </p>
 
+<p>
+  <strong>Images:</strong>
+    <br>
+    <% @idea.images.each do |image| %>
+      <img src="<%= image.path %>">
+    <% end %>
+</p>
+
 <%= link_to 'Edit', edit_idea_path(@idea) %> |
 <%= link_to 'Back', ideas_path %>
