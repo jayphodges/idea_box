@@ -1,11 +1,14 @@
+<ul id="dropdown1" class="dropdown-content">
+</ul>
 <nav>
-  <div class="nav-wrapper">
-    <a href="#" class="brand-logo">IdeaBox</a>
+  <div class="nav-wrapper blue">
+    <a href="#" class="brand-logo"><h3>IdeaBox</h3></a>
+    <a href="#!" class="brand-logo center small">Images</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><%= link_to 'Ideas', ideas_path %></li>
-      <li class="active"><%= link_to 'Categories', categories_path %></li>
-      <li><%= link_to 'Images', ideas_path %></li>
-      <li><%= link_to 'TBI', ideas_path %></li>
+      <li><%= link_to 'Categories', categories_path %></li>
+      <li class="active"><%= link_to 'Images', images_path %></li>
+      <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i></a></li>
     </ul>
   </div>
 </nav>

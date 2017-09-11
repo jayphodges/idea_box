@@ -8,6 +8,7 @@ class IdeasController < ApplicationController
   end
 
   def show
+    @images = Image.all
   end
 
   def new
@@ -17,10 +18,11 @@ class IdeasController < ApplicationController
 
   def edit
     @categories = Category.all
+    @images = Image.all
   end
 
   def create
-    @idea = Idea.new(idea_params)
+    @idea = @current_user.ideas.new(idea_params)
 
     respond_to do |format|
       if @idea.save
@@ -54,10 +56,6 @@ class IdeasController < ApplicationController
   end
 
   private
-
-    def require_auth
-      redirect_to login unless current_user
-    end
 
     def set_idea
       @idea = Idea.find(params[:id])

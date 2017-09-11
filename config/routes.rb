@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
-  root "categories#index"
+  root "welcome#index"
 
   resources :users, only: [:new, :create, :show]
   resources :ideas
   resources :categories
   resources :images
+
 
   get "/signup",    to: 'users#new'
   delete "/logout", to: 'sessions#destroy'
