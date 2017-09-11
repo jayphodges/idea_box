@@ -14,6 +14,7 @@ class IdeasController < ApplicationController
   end
 
   def edit
+    @categories = Category.all
   end
 
   def create

@@ -9,11 +9,28 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
+<h2>Your Ideas:</h2>
+<% @user.ideas.each do |idea| %>
+<div class="row">
+<div class="col s4">
+  <div class="card medium hoverable">
+    <div class="card-image">
+      <div class="responsive-img">
+      <img src="<%= Faker::LoremPixel.image %>">
+    </div>
+  </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <p><%= idea.content %></p>
+      </div>
+      <div class="card-action">
+        <a><%= link_to 'Edit', edit_idea_path(idea) %></a>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
+</div>
+<% end %>
+</div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
